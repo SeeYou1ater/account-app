@@ -3,6 +3,13 @@ const initialState = {
 }
 
 
+const getContacts = (contactsData: any) => {
+  return {
+    type: "GET_USERS",
+    data: contactsData
+  }
+} 
+
 
 export const appReducer = (state = initialState, action: any) => {
   switch (action.type) {
