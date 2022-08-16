@@ -1,17 +1,23 @@
+import { keyboard } from "@testing-library/user-event/dist/keyboard"
+import axios from "axios"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { RootStateType } from "../../../redux/redux-store"
 
 
 const Contacts = () => {
-  return (
+  const contacts = useSelector((state: RootStateType) => state.appReducer.contacts)
+  useEffect( () => {
+    axios.get('http://localhost:3004/')
+  }, [])
+
+
+  if (contacts === null) { return <div>Список контактов пуст</div> } else 
+   { return (
     <div>
       <h2>Contacts</h2>
-      <ul>
-        <li>Contact 1</li>
-        <li>Contact 2</li>
-        <li>Contact 3</li>
-        <li>Contact 4</li>
-      </ul>
     </div>
-  )
+  ) }
 }
 
 
