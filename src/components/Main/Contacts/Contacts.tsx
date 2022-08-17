@@ -1,14 +1,15 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { ThunkDispatch } from "redux-thunk"
 import { UserType } from "../../../api/api"
-import { getContactsThunkCreator } from "../../../redux/appReducer"
+import { AppReducerActionTypes, getContactsThunkCreator } from "../../../redux/appReducer"
 import { RootStateType } from "../../../redux/redux-store"
 import User from "../../User/User"
 
 
 const Contacts = () => {
-  const dispatch = useDispatch()
-  const contacts = useSelector((state: RootStateType) => state.appReducer.contacts)
+  const dispatch: ThunkDispatch<RootStateType, unknown, AppReducerActionTypes> = useDispatch()
+  const contacts = useSelector((state: RootStateType) => state.contacts)
 
   useEffect( () => {
     dispatch(getContactsThunkCreator())
