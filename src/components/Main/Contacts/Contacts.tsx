@@ -14,7 +14,7 @@ const Contacts = () => {
     dispatch(getContactsThunkCreator())
   }, [])
 
-  if (contacts === null) { return <div>Loading...</div> } else 
+  if (!contacts) { return <div>Loading...</div> } else if (contacts.length === 0) {return <div>Contact list is empty...</div>} else
    { return (
     <div>
       <h2>Contacts</h2>

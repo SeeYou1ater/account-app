@@ -1,10 +1,4 @@
 {
   "contacts": [
-    { "id": 0, "name": "Clare", "age": "32" }, 
-    { "id": 1, "name": "Adam", "age": "27" },
-    { "id": 2, "name": "Zaxar", "age": "21" },
-    { "id": 3, "name": "Kate", "age": "30" },
-    { "id": 4, "name": "Robert", "age": "44" },
-    { "id": 5, "name": "Jhon", "age": "52" }
   ]
 }
