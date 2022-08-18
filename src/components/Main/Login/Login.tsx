@@ -3,15 +3,16 @@
 const Login = () => {
 
   const submit = (e: any) => {
-    alert(e.target)
+    e.preventDefault()
+    console.log(e.target.elements.name)
   }
 
   return (
-    <form action="">
+    <form action="" onSubmit={submit}>
       <h2>Login</h2>
-      <input type="text" name='name' placeholder='email'/>
+      <input type="text" name='email' placeholder='email'/>
       <input type='password' name='password' placeholder="password"/>
-      <button onSubmit={submit}>Log in</button>
+      <button>Log in</button>
     </form>
   )
 }

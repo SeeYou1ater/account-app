@@ -1,12 +1,12 @@
 
 type PropsType = {
-  name: string
+  email: string
   age: number
 }
 
 const User: React.FC<PropsType> = (props) => {
   return (
-    <div><p>{props.name}</p><p>{props.age}</p></div>  
+    <div><p>{props.email}</p><p>{props.age}</p></div>  
   )
 }
 

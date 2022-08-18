@@ -16,6 +16,7 @@ const GuestPage = () => {
       <NavLink to='/login'>Login</NavLink>
       <br />
       <br />
+      <NavLink to='/register'>Register</NavLink>
     </div>
   )
 }

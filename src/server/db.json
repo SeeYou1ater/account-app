@@ -1,4 +1,9 @@
 {
-  "contacts": [
+  "users": [
+    {
+      "email": "awdawdw@mail.ru",
+      "password": "$2a$10$6pOPf8Dw8U7doX7jQ/oZG.gWRtGkoqUWWIzfCjuK.99FN5UcWWDmG",
+      "id": 1
+    }
   ]
 }
