@@ -1,15 +1,8 @@
 {
   "users": [
-    {
-      "email": "fawf@mail.ru",
-      "password": "$2a$10$KHeIA58OA3gARD/3V7KRFeZ0/nyVoVIi8Qb4QCwkqN9JsHY2ilvZ2",
-      "id": 1
-    }
+    
   ],
   "contacts": [
-    {
-      "email": "fawf@mail.ru",
-      "id": 1
-    }
+    
   ]
 }
