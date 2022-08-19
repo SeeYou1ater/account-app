@@ -18,7 +18,7 @@ const Contacts = () => {
    { return (
     <div>
       <h2>Contacts</h2>
-      {contacts.map( (el: UserType) => <User key={el.id} email={el.email} age={el.age}/>)}
+      {contacts.map( (el: UserType) => <User key={el.id} email={el.email} id={el.id}/>)}
     </div>
   ) }
 }

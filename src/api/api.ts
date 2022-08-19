@@ -4,7 +4,11 @@ import { DataSubmitType } from '../redux/appReducer';
 export type UserType = {
   id: number
   email: string
-  age: number
+}
+
+export type UserRegisterType = {
+  email: string
+  password: string
 }
 
 export type GetContactsType = Array<UserType> 
@@ -18,14 +22,27 @@ export const API = {
     return instance
               .get<GetContactsType>(`contacts`)
               .then(response => { 
-                return response.data
+                if (response.statusText === 'OK') { 
+                  return response.data 
+                }
               })
   },
   registerUser(dataSubmit: DataSubmitType) {
     return instance
               .post(`register`, { email: dataSubmit.email, password: dataSubmit.password })
               .then(response => { 
-                return response.data
+                if (response.statusText === 'Created') {
+                  return response.data 
+                }
+              })
+  },
+  addContact(user: any) {
+    return instance
+              .post('contacts', { email: user.email, id: user.id })
+              .then(response => { 
+                if (response.statusText === 'OK') { 
+                  return response.data 
+                }
               })
   }
 }

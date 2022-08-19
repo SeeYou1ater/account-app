@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk"
-import { API, GetContactsType } from "../api/api"
+import { API, GetContactsType, UserType } from "../api/api"
 import { RootStateType } from "./redux-store"
 
 const initialState = {
@@ -11,6 +11,8 @@ export type DataSubmitType = {
   password: string
 }
 
+
+
 type InitialStateType = typeof initialState
 
 
@@ -18,18 +20,19 @@ export type AppReducerActionTypes = AddContactsActionType
 
 export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, AppReducerActionTypes> 
 
-
 export const getContactsThunkCreator = (): ThunkType => {
   return async (dispatch) => {
     let data = await API.getUsers()
-    dispatch(addContacts(data))
+    if (data) {
+      dispatch(addContacts(data))
+    }
   }
 }
 
 export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType => {
   return async (dispatch) => {
     let data = await API.registerUser(dataSubmit)
-    //dispatch(addContacts(data))
+    await API.addContact(data.user)
   }
 }
 
