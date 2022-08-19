@@ -11,8 +11,6 @@ export type DataSubmitType = {
   password: string
 }
 
-
-
 type InitialStateType = typeof initialState
 
 
@@ -30,7 +28,7 @@ export const getContactsThunkCreator = (): ThunkType => {
 }
 
 export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType => {
-  return async (dispatch) => {
+  return async () => {
     let data = await API.registerUser(dataSubmit)
     await API.addContact(data.user)
   }
@@ -47,8 +45,6 @@ const addContacts = (contactsData: GetContactsType): AddContactsActionType => {
     data: contactsData
   }
 }
-
-
 
 export const appReducer = (state: InitialStateType = initialState, action: AppReducerActionTypes): InitialStateType => {
   switch (action.type) {

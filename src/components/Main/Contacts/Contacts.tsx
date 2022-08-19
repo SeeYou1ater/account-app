@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { UserType } from "../../../api/api"
+import { API, UserType } from "../../../api/api"
 import { getContactsThunkCreator } from "../../../redux/appReducer"
 import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import User from "../../User/User"

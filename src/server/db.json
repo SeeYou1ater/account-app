@@ -1,8 +1,15 @@
 {
   "users": [
-    
+    {
+      "email": "adad@mail.ru",
+      "password": "$2a$10$AzFJtkdQ3s2Oas16mbQji.9bR8fm2kdiQB6ONGrSbHWV7V.y8ykyy",
+      "id": 1
+    }
   ],
   "contacts": [
-    
+    {
+      "email": "adad@mail.ru",
+      "id": 1
+    }
   ]
 }

@@ -39,5 +39,5 @@ export const API = {
   addContact(user: any) {
     return instance
               .post('contacts', { email: user.email, id: user.id })
-  }
+  },
 }
