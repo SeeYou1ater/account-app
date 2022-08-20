@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import './GuestPage.css'
 
 
 
@@ -7,7 +8,7 @@ import { NavLink } from "react-router-dom"
 const GuestPage = () => {
   return (
     <div>
-      <h2>Hello!</h2>
+      <h2>Hello! Here can be guest page...</h2>
       <br />
       <br />
       <NavLink to='/contacts'>Contacts</NavLink>
