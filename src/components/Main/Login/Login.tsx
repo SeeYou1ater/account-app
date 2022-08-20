@@ -22,7 +22,7 @@ const Login = () => {
       <input type="text" name='email' placeholder='email'/>
       <input type='password' name='password' placeholder="password"/>
       <button>Log in</button>
-      <p>Doesn't have account? <NavLink to="register">Register</NavLink></p>
+      <p>Doesn't have account? <NavLink to="/register">Register</NavLink></p>
     </form>
   )
 }
