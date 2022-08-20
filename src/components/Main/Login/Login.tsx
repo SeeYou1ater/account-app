@@ -1,10 +1,19 @@
+import { useDispatch } from "react-redux"
+import { NavLink } from "react-router-dom"
+import { loginThunkCreator } from "../../../redux/appReducer"
+import { AppDispatchType } from "../../../redux/redux-store"
 
 
 const Login = () => {
+  const dispatch: AppDispatchType = useDispatch()
 
   const submit = (e: any) => {
     e.preventDefault()
-    console.log(e.target.elements.name)
+    const dataSubmit = { 
+      email: e.target.email.value,
+      password: e.target.password.value
+    }
+    dispatch(loginThunkCreator(dataSubmit))
   }
 
   return (
@@ -13,6 +22,7 @@ const Login = () => {
       <input type="text" name='email' placeholder='email'/>
       <input type='password' name='password' placeholder="password"/>
       <button>Log in</button>
+      <p>Doesn't have account? <NavLink to="register">Register</NavLink></p>
     </form>
   )
 }

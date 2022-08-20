@@ -40,4 +40,13 @@ export const API = {
     return instance
               .post('contacts', { email: user.email, id: user.id })
   },
+  login(dataSubmit: DataSubmitType) {
+    return instance
+              .post('login', { email: dataSubmit.email, password: dataSubmit.password })
+              .then(response => { 
+                if (response.statusText === 'OK') {
+                  return response.data 
+                }
+              })
+  }
 }
