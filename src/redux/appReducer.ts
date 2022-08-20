@@ -2,8 +2,11 @@ import { ThunkAction } from "redux-thunk"
 import { API, GetContactsType } from "../api/api"
 import { RootStateType } from "./redux-store"
 
+const GET_USERS = 'GET_USERS',
+      SET_AUTH_USER = "SET_AUTH_USER"
+
 type AuthUserType = {
-  id: string 
+  id: number
   email: string
 }
 
@@ -21,7 +24,7 @@ export type DataSubmitType = {
 type InitialStateType = typeof initialState
 
 
-export type AppReducerActionTypes = AddContactsActionType | SetAuthUserType
+export type AppReducerActionTypes = AddContactsActionType | SetAuthUserActionType
 
 export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, AppReducerActionTypes> 
 
@@ -50,41 +53,41 @@ export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType 
 }
 
 type AddContactsActionType = {
-  type: string
-  data: GetContactsType
+  type: typeof GET_USERS
+  contactsData: GetContactsType
 }
 
 const addContacts = (contactsData: GetContactsType): AddContactsActionType => {
   return {
     type: "GET_USERS",
-    data: contactsData
-  }
+    contactsData: contactsData
+  } as const 
 }
 
-type SetAuthUserType = {
-  type: string
-  data: AuthUserType
+type SetAuthUserActionType = {
+  type: typeof SET_AUTH_USER
+  authUserData: AuthUserType
 }
 
-const setAuthUser = (userData: AuthUserType): SetAuthUserType => {
+const setAuthUser = (userData: AuthUserType): SetAuthUserActionType => {
   return {
     type: "SET_AUTH_USER",
-    data: userData
-  }
+    authUserData: userData
+  } as const 
 }
 
-export const appReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
+export const appReducer = (state: InitialStateType = initialState, action: AppReducerActionTypes): InitialStateType => {
   switch (action.type) {
 
-    case "GET_USERS": {
-      let stateCopy = {...state, contacts: action.data}
+    case GET_USERS: {
+      let stateCopy = {...state, contacts: action.contactsData}
       return stateCopy
     }
 
-    case "SET_AUTH_USER": {
+    case SET_AUTH_USER: {
       let stateCopy = {...state, 
                         isAuth: true,
-                        authUser: action.data}
+                        authUser: action.authUserData}
       return stateCopy
     }
 

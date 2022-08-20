@@ -19,7 +19,7 @@ const Contacts = () => {
    { return (
     <div className='contacts'>
       <h2>Contacts</h2>
-      {contacts.map( (el: UserType) => <User key={el.id} email={el.email} id={el.id}/>)}
+      {contacts.map( (el: UserType) => <User key={el.id} email={el.email}/>)}
     </div>
   ) }
 }
