@@ -40,7 +40,9 @@ export const getContactsThunkCreator = (): ThunkType => {
 export const loginThunkCreator = (dataSubmit: DataSubmitType): ThunkType => {
   return async (dispatch) => {
     let data = await API.login(dataSubmit)
-    dispatch(setAuthUser(data.user))
+    if (data) {
+      dispatch(setAuthUser(data.user))
+    }
   }
 }
 
@@ -48,7 +50,9 @@ export const loginThunkCreator = (dataSubmit: DataSubmitType): ThunkType => {
 export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType => {
   return async () => {
     let data = await API.registerUser(dataSubmit)
-    await API.addContact(data.user)
+    if (data) {
+      await API.addContact(data.user)
+    }
   }
 }
 

@@ -6,6 +6,11 @@ export type UserType = {
   email: string
 }
 
+export type UserDataType = {
+  accessToken: string
+  user: UserType
+}
+
 export type UserRegisterType = {
   email: string
   password: string
@@ -29,20 +34,20 @@ export const API = {
   },
   registerUser(dataSubmit: DataSubmitType) {
     return instance
-              .post(`register`, { email: dataSubmit.email, password: dataSubmit.password })
+              .post<UserDataType>(`register`, { email: dataSubmit.email, password: dataSubmit.password })
               .then(response => { 
                 if (response.statusText === 'Created') {
                   return response.data 
                 }
               })
   },
-  addContact(user: any) {
+  addContact(user: UserType) {
     return instance
-              .post('contacts', { email: user.email, id: user.id })
+              .post<UserType>('contacts', { email: user.email, id: user.id })           
   },
   login(dataSubmit: DataSubmitType) {
     return instance
-              .post('login', { email: dataSubmit.email, password: dataSubmit.password })
+              .post<UserDataType>('login', { email: dataSubmit.email, password: dataSubmit.password })
               .then(response => { 
                 if (response.statusText === 'OK') {
                   return response.data 
