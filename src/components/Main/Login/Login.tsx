@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { loginThunkCreator } from "../../../redux/appReducer"
 import { AppDispatchType } from "../../../redux/redux-store"
+import './Login.css'
 
 
 const Login = () => {
@@ -25,8 +26,8 @@ const Login = () => {
       <p className="menu"><NavLink to="/*">Menu</NavLink></p>
       <form action="" onSubmit={submit} className='login-form'>
         <h2>Login</h2>
-        <input className='login-form__input-email' type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input className='login-form__input-email' type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <input className='login-form__input-email input-form' type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input className='login-form__input-password input-form' type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <button className="login-buton">Log in</button>
         <p>Doesn't have account? <NavLink to="/register">Register</NavLink></p>
       </form>
