@@ -11,21 +11,28 @@ import { NavLink } from "react-router-dom"
 const Contacts = () => {
   const dispatch: AppDispatchType = useDispatch()
   const contacts = useSelector((state: RootStateType) => state.contacts)
+  const isAuth = useSelector((state: RootStateType) => state.isAuth)
 
   useEffect( () => {
     dispatch(getContactsThunkCreator())
   }, [])
 
   if (!contacts) { return <div>Loading...</div> } else if (contacts.length === 0) {return <div>Contact list is empty...</div>} else
-   { return (
+   { if (!isAuth) { return <div className='contacts'>
+      <div>
+        <p className="menu"><NavLink to="/*">Menu</NavLink></p>
+        <h2>Contacts</h2>
+        <p>You are not authorized!</p>
+      </div>
+    </div> } else return (
     <div className='contacts'>
       <div>
         <p className="menu"><NavLink to="/*">Menu</NavLink></p>
         <h2>Contacts</h2>
-          <ul>
-            {contacts.map( (el: UserType) => <User key={el.id} email={el.email}/>)}
-          </ul>
-        </div>
+        <ul>
+          {contacts.map( (el: UserType) => <User key={el.id} email={el.email}/>)}
+        </ul>
+      </div>
     </div>
   ) }
 }
