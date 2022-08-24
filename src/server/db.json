@@ -14,6 +14,11 @@
       "email": "adades@mail.ru",
       "password": "$2a$10$GVs4mmwKOCBk68h42Zpp/eOfPZYQJWl.fDr0ayLJlznZWCx./8Ari",
       "id": 3
+    },
+    {
+      "email": "adadwadawd@mail.ru",
+      "password": "$2a$10$7vnrdSvn7O45EqbNwWe15e1yIIv.yLkOlhj0LpNJ3UXxwP.5GGAh2",
+      "id": 4
     }
   ],
   "contacts": [
@@ -28,6 +33,10 @@
     {
       "email": "adades@mail.ru",
       "id": 3
+    },
+    {
+      "email": "adadwadawd@mail.ru",
+      "id": 4
     }
   ]
 }

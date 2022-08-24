@@ -8,7 +8,7 @@ import './GuestPage.css'
 const GuestPage = () => {
   return (
     <div>
-      <h2>Hello! Here can be guest page...</h2>
+      <p className="menu">Menu</p>
       <br />
       <br />
       <NavLink to='/contacts'>Contacts</NavLink>

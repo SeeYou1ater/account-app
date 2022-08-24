@@ -21,13 +21,16 @@ const Login = () => {
   }
 
   return (
-    <form action="" onSubmit={submit}>
-      <h2>Login</h2>
-      <input type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-      <input type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-      <button>Log in</button>
-      <p>Doesn't have account? <NavLink to="/register">Register</NavLink></p>
-    </form>
+    <div>
+      <p className="menu"><NavLink to="/*">Menu</NavLink></p>
+      <form action="" onSubmit={submit} className='login-form'>
+        <h2>Login</h2>
+        <input className='login-form__input-email' type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input className='login-form__input-email' type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <button className="login-buton">Log in</button>
+        <p>Doesn't have account? <NavLink to="/register">Register</NavLink></p>
+      </form>
+    </div>
   )
 }
 

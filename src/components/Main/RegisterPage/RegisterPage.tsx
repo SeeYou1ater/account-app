@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import { NavLink } from "react-router-dom"
 import { registerUserThunkCreator } from "../../../redux/appReducer"
 import { AppDispatchType } from "../../../redux/redux-store"
 
@@ -20,12 +21,15 @@ const RegisterPage = () => {
   }
 
   return (
-    <form action="" onSubmit={submit}>
-      <h2>Register</h2>
-      <input type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-      <input type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-      <button>Register</button>
-    </form>
+    <div>
+      <p className="menu"><NavLink to="/*">Menu</NavLink></p>
+      <form action="" onSubmit={submit} className='register-form'>
+        <h2>Register</h2>
+        <input className='register-form__input-email' type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input className='register-form__input-password' type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <button className="register-buton">Register</button>
+      </form>
+    </div>
   )
 }
 
