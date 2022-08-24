@@ -1,3 +1,5 @@
+import './User.css'
+
 
 type PropsType = {
   email: string
@@ -5,7 +7,7 @@ type PropsType = {
 
 const User: React.FC<PropsType> = (props) => {
   return (
-    <div><p>{props.email}</p></div>  
+    <li>{props.email}</li>  
   )
 }
 

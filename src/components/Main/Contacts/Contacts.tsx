@@ -22,7 +22,9 @@ const Contacts = () => {
       <div>
         <p className="menu"><NavLink to="/*">Menu</NavLink></p>
         <h2>Contacts</h2>
-        {contacts.map( (el: UserType) => <User key={el.id} email={el.email}/>)}
+          <ul>
+            {contacts.map( (el: UserType) => <User key={el.id} email={el.email}/>)}
+          </ul>
         </div>
     </div>
   ) }

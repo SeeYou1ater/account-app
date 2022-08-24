@@ -24,8 +24,8 @@ const RegisterPage = () => {
   return (
     <div>
       <p className="menu"><NavLink to="/*">Menu</NavLink></p>
-      <form action="" onSubmit={submit} className='register-form'>
-        <h2>Register</h2>
+      <form action="" onSubmit={submit} className='register-form form'>
+        <h2 className="form-title">Register</h2>
         <input className='register-form__input-email input-form' type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
         <input className='register-form__input-password input-form' type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <button className="register-buton form-button">Register</button>

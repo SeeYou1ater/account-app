@@ -11,7 +11,7 @@
 
 .menu {
   text-align: start;
-  border-bottom: 2px solid #454545;
+  border-bottom: 2px solid #474747;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -44,9 +44,19 @@ a:hover {
   width: 150px;
   border-radius: 15px;
   background-color: #0fa;
+  margin-bottom: 10px;
 }
 
 .form-button:hover {
   background-color: rgb(10, 151, 104);
   color: white;
+}
+
+.form {
+  margin: 0 auto;
+  max-width: 250px;
+}
+
+.form-title {
+  margin-bottom: 10px;
 }
