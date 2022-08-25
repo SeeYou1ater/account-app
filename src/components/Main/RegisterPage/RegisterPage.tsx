@@ -31,7 +31,7 @@ const RegisterPage = () => {
                         </div> 
   } else return (
     <div>
-      <p className="menu"><NavLink to="/*">Menu</NavLink></p>
+      <Menu/>
       <form action="" onSubmit={submit} className='register-form form'>
         <h2 className="form-title">Register</h2>
         <input className='register-form__input-email input-form' type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>

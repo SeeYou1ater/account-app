@@ -3,7 +3,8 @@ import { API, GetContactsType } from "../api/api"
 import { RootStateType } from "./redux-store"
 
 const GET_USERS = 'GET_USERS',
-      SET_AUTH_USER = "SET_AUTH_USER"
+      SET_AUTH_USER = "SET_AUTH_USER",
+      LOGOUT_USER = 'LOGOUT_USER'
 
 type AuthUserType = {
   id: number
@@ -24,7 +25,7 @@ export type DataSubmitType = {
 type InitialStateType = typeof initialState
 
 
-export type AppReducerActionTypes = AddContactsActionType | SetAuthUserActionType
+export type AppReducerActionTypes = AddContactsActionType | SetAuthUserActionType | LogoutUserActionType
 
 export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, AppReducerActionTypes> 
 
@@ -53,6 +54,7 @@ export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType 
     let data = await API.registerUser(dataSubmit)
     if (data) {
       await API.addContact(data.user)
+      alert('Registration was successful!')
     }
   }
 }
@@ -81,6 +83,16 @@ export const setAuthUser = (userData: AuthUserType): SetAuthUserActionType => {
   } as const 
 }
 
+type LogoutUserActionType = {
+  type: typeof LOGOUT_USER
+}
+
+export const logoutUser = (): LogoutUserActionType => {
+  return {
+    type: "LOGOUT_USER",
+  } as const 
+}
+
 export const appReducer = (state: InitialStateType = initialState, action: AppReducerActionTypes): InitialStateType => {
   switch (action.type) {
 
@@ -93,6 +105,13 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
       let stateCopy = {...state, 
                         isAuth: true,
                         authUser: action.authUserData}
+      return stateCopy
+    }
+
+    case LOGOUT_USER: {
+      let stateCopy = {...state, 
+                        isAuth: false,
+                        authUser: null}
       return stateCopy
     }
 
