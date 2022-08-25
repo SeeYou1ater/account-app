@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { Navigate, NavLink } from "react-router-dom"
 import { loginThunkCreator } from "../../../redux/appReducer"
 import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
+import Menu from "../../common/Menu"
 import './Login.css'
 
 
@@ -23,7 +24,7 @@ const Login = () => {
     dispatch(loginThunkCreator(dataSubmit))
   }
   if (isAuth) { return <div className="already-auth-form">
-                          <p className="menu"><NavLink to="/*">Menu</NavLink></p>
+                          <Menu/> 
                           <div><p>You are already authorized!</p></div>
                         </div>
   } else return (

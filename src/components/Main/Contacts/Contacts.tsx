@@ -6,6 +6,7 @@ import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import './Contacts.css'
 import User from "../../User/User"
 import { NavLink } from "react-router-dom"
+import Menu from "../../common/Menu"
 
 
 const Contacts = () => {
@@ -20,14 +21,13 @@ const Contacts = () => {
   if (!contacts) { return <div>Loading...</div> } else if (contacts.length === 0) {return <div>Contact list is empty...</div>} else
    { if (!isAuth) { return <div className='contacts'>
       <div>
-        <p className="menu"><NavLink to="/*">Menu</NavLink></p>
         <h2>Contacts</h2>
         <p>You are not authorized!</p>
       </div>
     </div> } else return (
     <div className='contacts'>
       <div>
-        <p className="menu"><NavLink to="/*">Menu</NavLink></p>
+        <Menu/>
         <h2>Contacts</h2>
         <ul>
           {contacts.map( (el: UserType) => <User key={el.id} email={el.email}/>)}
