@@ -21,6 +21,7 @@ const Contacts = () => {
   if (!contacts) { return <div>Loading...</div> } else if (contacts.length === 0) {return <div>Contact list is empty...</div>} else
    { if (!isAuth) { return <div className='contacts'>
       <div>
+        <Menu/>
         <h2>Contacts</h2>
         <p>You are not authorized!</p>
       </div>
