@@ -1,3 +1,7 @@
 .login_no-account {
   font-size: 14px;
 }
+
+.already-auth-form {
+  min-height: 200px;
+}

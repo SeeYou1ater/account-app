@@ -1,16 +1,18 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { Navigate, NavLink } from "react-router-dom"
 import { loginThunkCreator } from "../../../redux/appReducer"
-import { AppDispatchType } from "../../../redux/redux-store"
+import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import './Login.css'
 
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
   const dispatch: AppDispatchType = useDispatch()
+
+  const isAuth = useSelector((state: RootStateType) => state.isAuth)
 
   const submit = (e: any) => {
     e.preventDefault()
@@ -20,8 +22,11 @@ const Login = () => {
     }
     dispatch(loginThunkCreator(dataSubmit))
   }
-
-  return (
+  if (isAuth) { return <div className="already-auth-form">
+                          <p className="menu"><NavLink to="/*">Menu</NavLink></p>
+                          <div><p>You are already authorized!</p></div>
+                        </div>
+  } else return (
     <div>
       <p className="menu"><NavLink to="/*">Menu</NavLink></p>
       <form action="" onSubmit={submit} className='login-form form'>
