@@ -41,6 +41,7 @@ export const loginThunkCreator = (dataSubmit: DataSubmitType): ThunkType => {
   return async (dispatch) => {
     let data = await API.login(dataSubmit)
     if (data) {
+      localStorage.setItem('user', JSON.stringify(data.user))
       dispatch(setAuthUser(data.user))
     }
   }
@@ -73,7 +74,7 @@ type SetAuthUserActionType = {
   authUserData: AuthUserType
 }
 
-const setAuthUser = (userData: AuthUserType): SetAuthUserActionType => {
+export const setAuthUser = (userData: AuthUserType): SetAuthUserActionType => {
   return {
     type: "SET_AUTH_USER",
     authUserData: userData
