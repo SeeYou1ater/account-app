@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import Menu from "../../common/Menu"
 import './GuestPage.css'
 
 
@@ -8,7 +9,7 @@ import './GuestPage.css'
 const GuestPage = () => {
   return (
     <div>
-      <p className="menu">Menu</p>
+      <Menu/>
       <br />
       <br />
       <NavLink to='/contacts'>Contacts</NavLink>
