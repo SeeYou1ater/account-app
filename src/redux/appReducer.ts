@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk"
-import { API, GetContactsType } from "../api/api"
+import { API, GetContactsType, UserType } from "../api/api"
 import { RootStateType } from "./redux-store"
 
 const GET_USERS = 'GET_USERS',
@@ -136,7 +136,7 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
     case CHANGE_CONTACT: {
       let stateCopy = {
         ...state,
-        contacts: state.contacts?.map( (user: AuthUserType) => { 
+        contacts: state.contacts && state.contacts?.map( (user: UserType) => { 
           if (user.id === action.id) { 
             return {...user, email: action.newEmail}
         }
