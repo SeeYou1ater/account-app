@@ -53,8 +53,7 @@ export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType 
   return async () => {
     let data = await API.registerUser(dataSubmit)
     if (data) {
-      await API.addContact(data.user)
-      alert('Registration was successful!')
+      alert('Registration was successfull!')
     }
   }
 }
