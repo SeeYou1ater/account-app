@@ -31,7 +31,7 @@ const Contacts = () => {
         <Menu/>
         <h2>Contacts</h2>
         <ul>
-          {contacts.map( (el: UserType) => <User key={el.id} email={el.email}/>)}
+          {contacts.map( (el: UserType) => <User key={el.id} email={el.email} id={el.id}/>)}
         </ul>
       </div>
     </div>

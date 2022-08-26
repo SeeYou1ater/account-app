@@ -4,7 +4,8 @@ import { RootStateType } from "./redux-store"
 
 const GET_USERS = 'GET_USERS',
       SET_AUTH_USER = "SET_AUTH_USER",
-      LOGOUT_USER = 'LOGOUT_USER'
+      LOGOUT_USER = 'LOGOUT_USER',
+      CHANGE_CONTACT = "CHANGE_CONTACT"
 
 type AuthUserType = {
   id: number
@@ -25,7 +26,7 @@ export type DataSubmitType = {
 type InitialStateType = typeof initialState
 
 
-export type AppReducerActionTypes = AddContactsActionType | SetAuthUserActionType | LogoutUserActionType
+export type AppReducerActionTypes = AddContactsActionType | SetAuthUserActionType | LogoutUserActionType | ChangeContactType
 
 export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, AppReducerActionTypes> 
 
@@ -70,6 +71,20 @@ const addContacts = (contactsData: GetContactsType): AddContactsActionType => {
   } as const 
 }
 
+type ChangeContactType = {
+  type: typeof CHANGE_CONTACT
+  id: number
+  newEmail: string
+}
+
+export const changeContact = (id: number, newEmail: string): ChangeContactType => {
+  return {
+    type: "CHANGE_CONTACT",
+    id: id,
+    newEmail: newEmail
+  }
+}
+
 type SetAuthUserActionType = {
   type: typeof SET_AUTH_USER
   authUserData: AuthUserType
@@ -96,21 +111,38 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
   switch (action.type) {
 
     case GET_USERS: {
-      let stateCopy = {...state, contacts: action.contactsData}
+      let stateCopy = { ...state, 
+                        contacts: action.contactsData
+                      }
       return stateCopy
     }
 
     case SET_AUTH_USER: {
       let stateCopy = {...state, 
                         isAuth: true,
-                        authUser: action.authUserData}
+                        authUser: action.authUserData
+                      }
       return stateCopy
     }
 
     case LOGOUT_USER: {
       let stateCopy = {...state, 
                         isAuth: false,
-                        authUser: null}
+                        authUser: null
+                      }
+      return stateCopy
+    }
+
+    case CHANGE_CONTACT: {
+      let stateCopy = {
+        ...state,
+        contacts: state.contacts?.map( (user: AuthUserType) => { 
+          if (user.id === action.id) { 
+            return {...user, email: action.newEmail}
+        }
+        return user;
+      })
+      }
       return stateCopy
     }
 
