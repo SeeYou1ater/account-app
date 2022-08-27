@@ -63,4 +63,13 @@ export const API = {
                 }
               })
   },
+  deleteContact(id: number) {
+    return instance
+              .delete<UserDataType>(`contacts/${id}` )
+              .then(response => { 
+                if (response.statusText === 'OK') {
+                  return response.data 
+                }
+              })
+  },
 }

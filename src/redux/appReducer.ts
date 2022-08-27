@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk"
-import { API, GetContactsType, UserType } from "../api/api"
+import { API, GetContactsType } from "../api/api"
 import { RootStateType } from "./redux-store"
 
 const GET_USERS = 'GET_USERS',
@@ -62,6 +62,15 @@ export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType 
 export const changeContactActionCreator = (email: string, id: number): ThunkType => {
   return async (dispatch) => {
     let data = await API.changeContact(email, id)
+    if (data) {
+      dispatch(getContactsThunkCreator())
+    }
+  }
+}
+
+export const deleteContactActionCreator = (id: number): ThunkType => {
+  return async (dispatch) => {
+    let data = await API.deleteContact(id)
     if (data) {
       dispatch(getContactsThunkCreator())
     }
