@@ -5,7 +5,6 @@ import { getContactsThunkCreator } from "../../../redux/appReducer"
 import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import './Contacts.css'
 import User from "../../User/User"
-import { NavLink } from "react-router-dom"
 import Menu from "../../common/Menu"
 
 

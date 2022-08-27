@@ -59,6 +59,15 @@ export const registerUserThunkCreator = (dataSubmit: DataSubmitType): ThunkType 
   }
 }
 
+export const changeContactActionCreator = (email: string, id: number): ThunkType => {
+  return async (dispatch) => {
+    let data = await API.changeContact(email, id)
+    if (data) {
+      dispatch(getContactsThunkCreator())
+    }
+  }
+}
+
 type AddContactsActionType = {
   type: typeof GET_USERS
   contactsData: GetContactsType
@@ -75,14 +84,6 @@ type ChangeContactType = {
   type: typeof CHANGE_CONTACT
   id: number
   newEmail: string
-}
-
-export const changeContact = (id: number, newEmail: string): ChangeContactType => {
-  return {
-    type: "CHANGE_CONTACT",
-    id: id,
-    newEmail: newEmail
-  }
 }
 
 type SetAuthUserActionType = {
@@ -133,7 +134,7 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
       return stateCopy
     }
 
-    case CHANGE_CONTACT: {
+    /*case CHANGE_CONTACT: {
       let stateCopy = {
         ...state,
         contacts: state.contacts && state.contacts?.map( (user: UserType) => { 
@@ -144,7 +145,7 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
       })
       }
       return stateCopy
-    }
+    }*/
 
     default:
       return state

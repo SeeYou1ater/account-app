@@ -53,5 +53,14 @@ export const API = {
                   return response.data 
                 }
               })
-  }
+  },
+  changeContact(email: string, id: number) {
+    return instance
+              .put<UserDataType>(`contacts/${id}`, { email: email }, {headers: { 'Content-Type': 'application/json' } } )
+              .then(response => { 
+                if (response.statusText === 'OK') {
+                  return response.data 
+                }
+              })
+  },
 }

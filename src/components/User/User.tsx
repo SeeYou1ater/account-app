@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { changeContact } from '../../redux/appReducer'
+import { changeContactActionCreator } from '../../redux/appReducer'
 import { AppDispatchType } from '../../redux/redux-store'
 import './User.css'
+import statusChange from '../../assets/icons/change-icon.png'
 
 
 type PropsType = {
@@ -20,15 +21,16 @@ const User: React.FC<PropsType> = (props) => {
     setEditMode(true)
   }
 
-  const deactivateEditMode = (e: ChangeEvent<HTMLInputElement>) => {
+  const deactivateEditMode = () => {
     setEditMode(false)
-    dispatch(changeContact(props.id, e.currentTarget.value))
+
+    dispatch(changeContactActionCreator(email, props.id))
   }
 
   return (
     editMode 
-      ? <input type="text" value={email} onBlur={ (e) => { deactivateEditMode(e) } } onChange={(e: ChangeEvent<HTMLInputElement>) => { setEmail(e.currentTarget.value) }}/>
-      : <li>{email}<button onClick={ activateEditMode }>Change</button></li>
+      ? <input className='change-input' type="text" autoFocus={true}value={email} onBlur={ () => { deactivateEditMode() } } onChange={(e: ChangeEvent<HTMLInputElement>) => { setEmail(e.currentTarget.value) }}/>
+      : <li>{email}<img tabIndex={0} onBlur={ () => { deactivateEditMode() } } className='change-icon-img' src={statusChange} alt="#" onClick={ activateEditMode }></img></li>
 
   )
 }
