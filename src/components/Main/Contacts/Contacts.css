@@ -7,3 +7,16 @@
   margin-bottom: 30px;
 }
 
+.add-contact-input {
+  margin-top: 15px;
+  border-radius: 15px;
+  width: 250px;
+  height: 30px;
+}
+
+.add-contact-block {
+  border-top: 1px solid grey;
+  max-width: 300px;
+  margin: 15px auto 0;
+}
+
