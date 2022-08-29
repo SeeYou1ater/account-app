@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm run dev (Starting json-server, json-server-auth & account-app)`, Node version: v16.13.1
+### `npm run dev` (Starting json-server, json-server-auth & account-app), `node version: v16.13.1`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
