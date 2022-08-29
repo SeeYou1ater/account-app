@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { UserType } from "../../../api/api"
-import { getContactsThunkCreator } from "../../../redux/appReducer"
+import { addContactActionCreator, getContactsThunkCreator } from "../../../redux/appReducer"
 import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import './Contacts.css'
 import User from "../../User/User"
@@ -35,7 +35,7 @@ const Contacts = () => {
         </ul>
         <div className="add-contact-block">
           <input className="add-contact-input" type="text" value={contact} onChange={(e: ChangeEvent<HTMLInputElement>) => { setContact(e.currentTarget.value) }}/>
-          <button onClick={} className="add-contact-button">Add contact</button>  
+          <button onClick={ () => { dispatch(addContactActionCreator(contact)) } } className="add-contact-button">Add contact</button>  
         </div>
       </div>
     </div>

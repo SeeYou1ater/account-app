@@ -77,6 +77,15 @@ export const deleteContactActionCreator = (id: number): ThunkType => {
   }
 }
 
+export const addContactActionCreator = (email: string): ThunkType => {
+  return async (dispatch) => {
+    let data = await API.addContact(email)
+    if (data) {
+      dispatch(getContactsThunkCreator())
+    }
+  }
+}
+
 type AddContactsActionType = {
   type: typeof GET_USERS
   contactsData: GetContactsType

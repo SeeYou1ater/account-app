@@ -41,10 +41,6 @@ export const API = {
                 }
               })
   },
-  addContact(user: UserType) {
-    return instance
-              .post<UserType>('contacts', { email: user.email, id: user.id })           
-  },
   login(dataSubmit: DataSubmitType) {
     return instance
               .post<UserDataType>('login', { email: dataSubmit.email, password: dataSubmit.password })
@@ -71,5 +67,14 @@ export const API = {
                   return response.data 
                 }
               })
+  },
+  addContact(email: string) {
+    return instance
+              .post<UserType>('contacts', { email: email })
+              .then(response => { 
+                if (response.statusText === 'Created') {
+                  return response.data 
+                }
+              })           
   },
 }
