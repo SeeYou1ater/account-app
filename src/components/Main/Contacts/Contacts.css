@@ -4,10 +4,10 @@
 
 .contacts h2{
   font-size: 25px;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 
-.add-contact-input {
+.input {
   margin-top: 15px;
   border-radius: 15px;
   width: 250px;
@@ -17,20 +17,24 @@
   font-size: 14px;
 }
 
+.find-contact-input {
+  margin-bottom: 15px;
+}
+
 .add-contact-block {
   border-top: 1px solid grey;
   max-width: 400px;
   margin: 15px auto 0;
 }
 
-.add-contact-button {
+.button {
   padding: 7px;
   border-radius: 15px;
   background-color: green;
   margin-left: 6px;
 }
 
-.add-contact-button:hover {
+.button:hover {
   background-color: rgb(2, 61, 2);
 }
 

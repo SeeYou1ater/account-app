@@ -77,4 +77,13 @@ export const API = {
                 }
               })           
   },
+  findContact(term: string) {
+    return instance
+              .get(`contacts?email_like=${term}`)
+              .then(response => {
+                if (response.statusText === 'OK') { 
+                  return response.data 
+                }
+              })
+  },
 }
