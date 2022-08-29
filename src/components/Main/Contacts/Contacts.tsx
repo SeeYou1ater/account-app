@@ -35,6 +35,7 @@ const Contacts = () => {
         </ul>
         <div className="add-contact-block">
           <input className="add-contact-input" type="text" value={contact} onChange={(e: ChangeEvent<HTMLInputElement>) => { setContact(e.currentTarget.value) }}/>
+          <button onClick={} className="add-contact-button">Add contact</button>  
         </div>
       </div>
     </div>

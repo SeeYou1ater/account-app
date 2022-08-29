@@ -12,11 +12,23 @@
   border-radius: 15px;
   width: 250px;
   height: 30px;
+  display: inline-block;
 }
 
 .add-contact-block {
   border-top: 1px solid grey;
-  max-width: 300px;
+  max-width: 400px;
   margin: 15px auto 0;
+}
+
+.add-contact-button {
+  padding: 7px;
+  border-radius: 15px;
+  background-color: green;
+  margin-left: 6px;
+}
+
+.add-contact-button:hover {
+  background-color: rgb(2, 61, 2);
 }
 
