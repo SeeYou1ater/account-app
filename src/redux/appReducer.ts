@@ -160,20 +160,7 @@ export const appReducer = (state: InitialStateType = initialState, action: AppRe
                       }
       return stateCopy
     }
-
-    /*case CHANGE_CONTACT: {
-      let stateCopy = {
-        ...state,
-        contacts: state.contacts && state.contacts?.map( (user: UserType) => { 
-          if (user.id === action.id) { 
-            return {...user, email: action.newEmail}
-        }
-        return user;
-      })
-      }
-      return stateCopy
-    }*/
-
+    
     default:
       return state
   }
