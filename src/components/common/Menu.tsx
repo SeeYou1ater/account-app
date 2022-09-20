@@ -1,8 +1,6 @@
-import { useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks"
 import { logoutUser } from "../../redux/appReducer"
-import { AppDispatchType, RootStateType } from "../../redux/redux-store"
 import './Menu.css'
 
 
