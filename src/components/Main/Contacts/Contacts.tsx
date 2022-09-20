@@ -1,17 +1,16 @@
-import { ChangeEvent, useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useState } from "react"
 import { UserType } from "../../../api/api"
 import { addContactActionCreator, findContactActionCreator, getContactsThunkCreator } from "../../../redux/appReducer"
-import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import './Contacts.css'
 import User from "../../User/User"
 import Menu from "../../common/Menu"
+import { useAppDispatch, useAppSelector } from "../../../hooks"
 
 
 const Contacts = () => {
-  const dispatch: AppDispatchType = useDispatch()
-  const contacts = useSelector((state: RootStateType) => state.contacts)
-  const isAuth = useSelector((state: RootStateType) => state.isAuth)
+  const dispatch = useAppDispatch()
+  const contacts = useAppSelector( state => state.contacts )
+  const isAuth = useAppSelector( state => state.isAuth )
   let [contact, setContact] = useState('')
   let [term, setTerm] = useState('')
 
@@ -31,13 +30,13 @@ const Contacts = () => {
       <div>
         <Menu/>
         <h2>Contacts</h2>
-        <input className="find-contact-input input" placeholder='try enter a name' type="text" value={term} onChange={(e: ChangeEvent<HTMLInputElement>) => { setTerm(e.currentTarget.value) }}/>
+        <input className="find-contact-input input" placeholder='try enter a name' type="text" value={term} onChange={(e) => { setTerm(e.currentTarget.value) }}/>
         <button onClick={ () => { dispatch(findContactActionCreator(term)) } } className="find-contact-button button">Find</button>
         <ul>
           {contacts.map( (el: UserType) => <User key={el.id} email={el.email} id={el.id}/>)}
         </ul>
         <div className="add-contact-block">
-          <input className="add-contact-input input" placeholder='enter a name' type="text" value={contact} onChange={(e: ChangeEvent<HTMLInputElement>) => { setContact(e.currentTarget.value) }}/>
+          <input className="add-contact-input input" placeholder='enter a name' type="text" value={contact} onChange={(e) => { setContact(e.currentTarget.value) }}/>
           <button onClick={ () => { dispatch(addContactActionCreator(contact)) } } className="add-contact-button button">Add contact</button>  
         </div>
       </div>
