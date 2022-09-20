@@ -2,12 +2,11 @@ import './App.css';
 import './Reset.css';
 import Main from './components/Main/Main';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { setAuthUser } from './redux/appReducer';
-import { AppDispatchType } from './redux/redux-store';
+import { useAppDispatch } from './hooks';
 
 function App() {
-  const dispatch: AppDispatchType = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect( () => {
     let user = localStorage.getItem('user')

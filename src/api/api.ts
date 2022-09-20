@@ -51,7 +51,7 @@ export const API = {
                   return response.data 
                 }
               })
-              .catch( (err) => { alert(err.message) })
+              .catch( (err) => { alert(err.message) }) 
   },
   changeContact(email: string, id: number) {
     return instance
