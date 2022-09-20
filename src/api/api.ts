@@ -31,6 +31,7 @@ export const API = {
                   return response.data 
                 }
               })
+              .catch( (err) => { alert(err.message) })
   },
   registerUser(dataSubmit: DataSubmitType) {
     return instance
@@ -40,6 +41,7 @@ export const API = {
                   return response.data 
                 }
               })
+              .catch( (err) => { alert(err.message) })
   },
   login(dataSubmit: DataSubmitType) {
     return instance
@@ -49,6 +51,7 @@ export const API = {
                   return response.data 
                 }
               })
+              .catch( (err) => { alert(err.message) })
   },
   changeContact(email: string, id: number) {
     return instance
@@ -58,6 +61,7 @@ export const API = {
                   return response.data 
                 }
               })
+              .catch( (err) => { alert(err.message) })
   },
   deleteContact(id: number) {
     return instance
@@ -67,6 +71,7 @@ export const API = {
                   return response.data 
                 }
               })
+              .catch( (err) => { alert(err.message) })
   },
   addContact(email: string) {
     return instance
@@ -75,7 +80,8 @@ export const API = {
                 if (response.statusText === 'Created') {
                   return response.data 
                 }
-              })           
+              })
+              .catch( (err) => { alert(err.message) })           
   },
   findContact(term: string) {
     return instance
@@ -85,5 +91,6 @@ export const API = {
                   return response.data 
                 }
               })
+              .catch( (err) => { alert(err.message) })
   },
 }
