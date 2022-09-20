@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../hooks"
 import { logoutUser } from "../../redux/appReducer"
 import { AppDispatchType, RootStateType } from "../../redux/redux-store"
 import './Menu.css'
 
 
 const Menu = () => {
-  let isAuth = useSelector((state: RootStateType) => { return state.isAuth })
-  let authUserEmail = useSelector((state: RootStateType) => { return state.authUser?.email })
-  const dispatch: AppDispatchType = useDispatch()
+  let isAuth = useAppSelector( state => state.isAuth )
+  let authUserEmail = useAppSelector( state =>  state.authUser?.email )
+  const dispatch = useAppDispatch()
 
   const logout = () => {
     dispatch(logoutUser())
