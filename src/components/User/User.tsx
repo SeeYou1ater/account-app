@@ -1,10 +1,9 @@
-import { ChangeEvent, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 import { changeContactActionCreator, deleteContactActionCreator } from '../../redux/appReducer'
-import { AppDispatchType } from '../../redux/redux-store'
 import './User.css'
 import contactChange from '../../assets/icons/change-icon.png'
 import deleteContact from '../../assets/icons/delete-icon.png'
+import { useAppDispatch } from '../../hooks'
 
 
 type PropsType = {
@@ -13,7 +12,7 @@ type PropsType = {
 }
 
 const User: React.FC<PropsType> = (props) => {
-  const dispatch: AppDispatchType = useDispatch()
+  const dispatch = useAppDispatch()
 
   let [email, setEmail] = useState(props.email)
   let [editMode, setEditMode] = useState(false)
@@ -30,7 +29,7 @@ const User: React.FC<PropsType> = (props) => {
 
   return (
     editMode 
-      ? <input className='change-input' type="text" autoFocus={true}value={email} onBlur={ () => { deactivateEditMode() } } onChange={(e: ChangeEvent<HTMLInputElement>) => { setEmail(e.currentTarget.value) }}/>
+      ? <input className='change-input' type="text" autoFocus={true} value={email} onBlur={ () => { deactivateEditMode() } } onChange={ (e) => { setEmail(e.currentTarget.value) } }/>
       : <li>
           {email}
           <img onBlur={ () => { deactivateEditMode() } } className='change-icon-img icon' src={contactChange} alt="#" onClick={ activateEditMode }></img>

@@ -1,25 +1,27 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { Navigate, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../../hooks"
 import { loginThunkCreator } from "../../../redux/appReducer"
-import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import Menu from "../../common/Menu"
 import './Login.css'
 
+type dataSubmitType = {
+  email: string
+  password: string
+}
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const dispatch: AppDispatchType = useDispatch()
+  const dispatch = useAppDispatch()
 
-  const isAuth = useSelector((state: RootStateType) => state.isAuth)
+  const isAuth = useAppSelector( state => state.isAuth)
 
-  const submit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const dataSubmit = { 
-      email: e.target.email.value,
-      password: e.target.password.value
+    const dataSubmit: dataSubmitType = { 
+      email,
+      password
     }
     dispatch(loginThunkCreator(dataSubmit))
   }
@@ -30,7 +32,7 @@ const Login = () => {
   } else return (
     <div>
       <p className="menu"><NavLink to="/*">Menu</NavLink></p>
-      <form action="" onSubmit={submit} className='login-form form'>
+      <form action="" onSubmit={handleSubmit} className='login-form form'>
         <h2 className="form-title">Login</h2>
         <input className='login-form__input-email input-form' type="text" name='email' placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
         <input className='login-form__input-password input-form' type='password' name='password' placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>

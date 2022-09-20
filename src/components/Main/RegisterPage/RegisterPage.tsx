@@ -1,9 +1,6 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../../hooks"
 import { registerUserThunkCreator } from "../../../redux/appReducer"
-import { AppDispatchType, RootStateType } from "../../../redux/redux-store"
 import Menu from "../../common/Menu"
 import './RegisterPage.css'
 
@@ -12,15 +9,15 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const isAuth = useSelector( (state: RootStateType) => { return state.isAuth} )
+  const isAuth = useAppSelector( state => state.isAuth )
 
-  const dispatch: AppDispatchType = useDispatch()
+  const dispatch = useAppDispatch()
 
-  const submit = (e: any) => {
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const dataSubmit = { 
-      email: e.target.email.value,
-      password: e.target.password.value
+      email,
+      password
     }
     dispatch(registerUserThunkCreator(dataSubmit))
   }
