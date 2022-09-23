@@ -7,8 +7,7 @@ export const store = configureStore({
   middleware: [thunkMiddleware]
 })
 
+export type StoreType = typeof store
+
 export type RootStateType = ReturnType<typeof store.getState>
 export type AppDispatchType = typeof store.dispatch & ThunkDispatch<RootStateType, unknown, AppReducerActionTypes>
-
-//@ts-ignore
-window.store = store

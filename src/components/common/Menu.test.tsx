@@ -1,14 +1,9 @@
-import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 import Menu from './Menu';
-import { store } from './../../redux/redux-store';
+import { renderWithRedux } from '../../hoc/renderWithRedux';
 
 
-it('Menu renders', () => {
-  render( <BrowserRouter>
-            <Provider store={store}>
-              <Menu />
-            </Provider>
-          </BrowserRouter>)
+it('Menu header renders', () => {
+  renderWithRedux(<Menu />)        
+  expect(screen.getByText('Menu')).toBeInTheDocument()
 });

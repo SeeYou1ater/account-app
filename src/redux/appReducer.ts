@@ -7,7 +7,7 @@ const GET_USERS = 'GET_USERS',
       LOGOUT_USER = 'LOGOUT_USER',
       CHANGE_CONTACT = "CHANGE_CONTACT"
 
-type AuthUserType = {
+export type AuthUserType = {
   id: number
   email: string
 }
@@ -23,7 +23,7 @@ export type DataSubmitType = {
   password: string
 }
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
 
 export type AppReducerActionTypes = AddContactsActionType | SetAuthUserActionType | LogoutUserActionType | ChangeContactType
