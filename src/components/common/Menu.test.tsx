@@ -4,6 +4,6 @@ import { renderWithRedux } from '../../hoc/renderWithRedux';
 
 
 it('Menu header renders', () => {
-  renderWithRedux(<Menu />)        
+  renderWithRedux(<Menu />, {initialState: {isAuth: false, contacts: null, authUser: null}})        
   expect(screen.getByText('Menu')).toBeInTheDocument()
 });
